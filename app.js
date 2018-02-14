@@ -72,7 +72,6 @@ app.use(admin);
 
 app.use((req, res, next) => {
   if (req.isAuthenticated()) {
-    // getum núna notað user í viewum
     res.locals.user = req.user;
   }
 
@@ -98,6 +97,7 @@ app.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
+
 function notFoundHandler(req, res, next) { // eslint-disable-line
   res.status(404).render('error', { title: '404' });
 }
@@ -106,6 +106,9 @@ function errorHandler(err, req, res, next) { // eslint-disable-line
   console.error(err);
   res.status(500).render('error', { err });
 }
+
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 const hostname = '127.0.0.1';
 const port = 3000;

@@ -1,5 +1,11 @@
-p Villa
+extends layout
 
-if err && err.message
-  p=err.message
-  pre #{err.stack}
+block content
+  h2 Villa
+  p Umbeðin síða fannst ekki eða er ekki til
+  p
+    a(href="/") Aftur á forsíðu
+
+  if err && err.message
+    p=err.message
+    pre #{err.stack}

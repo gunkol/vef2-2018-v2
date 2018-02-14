@@ -18,10 +18,10 @@ block content
     button Skrá
 
   footer
-    if !data
+    if !userdata
       a(href='/login') Innskráning
-    if data
-      p Innskráður notandi: #{data.name}
+    if userdata
+      p Innskráður notandi: #{userdata.name}
       p
         a(href="/logout") Útskráning
       p
