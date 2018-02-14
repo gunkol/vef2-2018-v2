@@ -9,7 +9,6 @@ const express = require('express');
 const router = express.Router();
 
 function form(req, res) {
-  const data = {}; // eslint-disable-line
   if (req.isAuthenticated()) {
     const userdata = req.user;
     return res.render('form', { userdata });
@@ -22,8 +21,6 @@ async function addOrder(name, email, amount, ssn) {
   await client.connect();
   const query = 'INSERT INTO orders(name, email, amount, ssn) VALUES ($1, $2, $3, $4)';
   const values = [name, email, amount, ssn];
-  // console.log('addNote');
-  // console.log(name, email, amount, ssn);
   await client.query(query, values);
   await client.end();
 }
