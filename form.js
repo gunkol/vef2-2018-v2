@@ -12,9 +12,9 @@ function form(req, res) {
   const data = {}; // eslint-disable-line
   if (req.isAuthenticated()) {
     const userdata = req.user;
-    res.render('form', { userdata });
+    return res.render('form', { userdata });
   }
-  res.render('form');
+  return res.render('form');
 }
 
 async function addOrder(name, email, amount, ssn) {
@@ -50,6 +50,13 @@ router.post(
 
     if (!errors.isEmpty()) {
       const errorMessages = errors.array().map(i => i.msg);
+      if (req.isAuthenticated()) {
+        const userdata = req.user;
+
+        return res.render('form', {
+          userdata, errorMessages, name, email, ssn, amount,
+        });
+      }
 
       return res.render('form', {
         errorMessages, name, email, ssn, amount,
