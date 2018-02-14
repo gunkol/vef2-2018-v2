@@ -5,7 +5,7 @@ block content
     ul
       each msg in errorMessages
         li= msg
-  form.input(method="post" action="/addorder")
+  form.input(method="post" action="/")
     label.input__name Nafn:
       //- muna að setja required
       input(type="text" name="name" value=name)

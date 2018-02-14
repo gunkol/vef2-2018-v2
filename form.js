@@ -29,7 +29,7 @@ async function addOrder(name, email, amount, ssn) {
 }
 
 router.post(
-  '/addorder',
+  '/',
   check('name').isLength({ min: 1 }).withMessage('Nafn má ekki vera tómt'),
   check('email').isLength({ min: 1 }).withMessage('Netfang má ekki vera tómt'),
   check('email').isEmail().withMessage('Netfang verður að vera netfang'),
@@ -63,5 +63,8 @@ router.post(
 );
 
 router.get('/', form);
+router.get('/thanks', (req, res) => {
+  res.render('thanks');
+});
 
 module.exports = router;
