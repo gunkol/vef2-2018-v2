@@ -3,6 +3,10 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 
+const passport = require('passport');
+const { Strategy } = require('passport-local');
+
+const users = require('./users');
 const form = require('./form');
 const admin = require('./admin');
 
@@ -12,6 +16,16 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+const sessionSecret = 'leyndarmál';
+
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }));
+app.use(session({
+  secret: sessionSecret,
+  resave: false,
+  saveUninitialized: false,
+}));
 
 app.use('/', form);
 app.use('/admin', admin);

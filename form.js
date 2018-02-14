@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 function form(req, res) {
-  const data = {};
+  const data = { };
   res.render('form', { data });
 }
 

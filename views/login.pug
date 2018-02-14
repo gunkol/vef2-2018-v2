@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  form.input(method="post" action="/admin")
+    label.input__username Notendanafn:
+      //- muna að setja required
+      input(type="text" name="username")
+    label.input__password Lykilorð:
+      input(type="password" name="password")
+    button Innskrá
+
+  a(href='/') Forsíða

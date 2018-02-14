@@ -1,4 +1,15 @@
 extends layout
 
 block content
-  p Form!
+  form.input(method="post" action="/addorder")
+    label.input__name Nafn:
+      //- muna að setja required
+      input(type="text" name="name" value=data.name)
+    label.input__email Netfang:
+      input(type="email" name="email" value=data.email)
+    label.input__ssn Kennitala:
+      input(type="text" name="ssn" pattern="[0-9]{6}-?[0-9]{4}" value=data.ssn)
+    label.input__amount Fjöldi:
+      input(type="number" name="amount" min="1" value=data.amount)
+    button Skrá
+  a(href='/login') Innskráning
