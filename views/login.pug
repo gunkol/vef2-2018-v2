@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  form.input(method="post" action="/admin")
+  form.input(method="post" action="/login")
     label.input__username Notendanafn:
       //- muna að setja required
       input(type="text" name="username")
@@ -9,4 +9,5 @@ block content
       input(type="password" name="password")
     button Innskrá
 
-  a(href='/') Forsíða
+  footer
+    a(href='/') Forsíða

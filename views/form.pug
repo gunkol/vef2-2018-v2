@@ -1,15 +1,28 @@
 extends layout
 
 block content
+  if errorMessages
+    ul
+      each msg in errorMessages
+        li= msg
   form.input(method="post" action="/addorder")
     label.input__name Nafn:
       //- muna að setja required
-      input(type="text" name="name" value=data.name)
+      input(type="text" name="name" value=name)
     label.input__email Netfang:
-      input(type="email" name="email" value=data.email)
+      input(type="email" name="email" value=email)
     label.input__ssn Kennitala:
-      input(type="text" name="ssn" pattern="[0-9]{6}-?[0-9]{4}" value=data.ssn)
+      input(type="text" name="ssn" pattern="[0-9]{6}-?[0-9]{4}" value=ssn)
     label.input__amount Fjöldi:
-      input(type="number" name="amount" min="1" value=data.amount)
+      input(type="number" name="amount" min="1" value=amount)
     button Skrá
-  a(href='/login') Innskráning
+
+  footer
+    if !data
+      a(href='/login') Innskráning
+    if data
+      p Innskráður notandi: #{data.name}
+      p
+        a(href="/logout") Útskráning
+      p
+        a(href="/admin") Stjórnsíða

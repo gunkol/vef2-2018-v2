@@ -5,7 +5,7 @@ const util = require('util');
 const readFileAsync = util.promisify(fs.readFile);
 
 const schemaFile = './schema.sql';
-const connectionString = process.env.DATABASE_URL || 'postgres://:@localhost/accounts';
+const connectionString = process.env.DATABASE_URL || 'postgres://:@localhost/v2';
 
 async function create() {
   const data = await readFileAsync(schemaFile);
