@@ -1,10 +1,11 @@
 extends layout
 
 block content
-  h2 Villa
-  p Umbeðin síða fannst ekki eða er ekki til
-  p
-    a(href="/") Aftur á forsíðu
+  div.error
+    h2 Villa
+    p.errorpage Umbeðin síða fannst ekki eða er ekki til
+    p.errorpage
+      a.errorpage__errorlink(href="/") Aftur á forsíðu
 
   if err && err.message
     p=err.message

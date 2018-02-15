@@ -31,7 +31,7 @@ router.get('/admin', ensureLoggedIn, async (req, res) => {
 
 router.get('/admin/download', async (req, res) => {
   const orders = await fetchOrders();
-  json2csv({ data: orders, quotes: '' }, (err, csv) => {
+  json2csv({ data: orders, quotes: '', del: ';' }, (err, csv) => {
     res.setHeader('Content-disposition', 'attachment; filename=orders.csv');
     res.set('Content-Type', 'text/csv');
     res.status(200).send(csv);

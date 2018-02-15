@@ -2,27 +2,27 @@ extends layout
 
 block content
   if errorMessages
-    ul
+    ul.errorMessages
       each msg in errorMessages
         li= msg
   form.input(method="post" action="/")
-    label.input__name Nafn:
-      //- muna að setja required
-      input(type="text" name="name" value=name required)
-    label.input__email Netfang:
-      input(type="email" name="email" value=email required)
-    label.input__ssn Kennitala:
-      input(type="text" name="ssn" pattern="[0-9]{6}-?[0-9]{4}" value=ssn required)
-    label.input__amount Fjöldi:
-      input(type="number" name="amount" min="1" value=amount required)
-    button Skrá
+    label.input__item Nafn:
+      input(type="text" name="name" value=name)
+    label.input__item Netfang:
+      input(type="email" name="email" value=email)
+    label.input__item Kennitala:
+      input(type="text" name="ssn" pattern="[0-9]{6}-?[0-9]{4}" value=ssn)
+    label.input__item Fjöldi:
+      input(type="number" name="amount" min="1" value=amount)
+    button.input__button Senda
 
-  footer
+  footer.footer
     if !userdata
-      a(href='/login') Innskráning
+      p.footer__text
+        a(href='/login') Innskráning
     if userdata
-      p Innskráður notandi: #{userdata.name}
-      p
+      p.footer__text Innskráður notandi: #{userdata.name}
+      p.footer__text
         a(href="/logout") Útskráning
-      p
+      p.footer__text
         a(href="/admin") Stjórnsíða

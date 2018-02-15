@@ -2,12 +2,12 @@ extends layout
 
 block content
   form.input(method="post" action="/login")
-    label.input__username Notendanafn:
-      //- muna að setja required
+    label.input__item Notendanafn:
       input(type="text" name="username" required)
-    label.input__password Lykilorð:
+    label.input__item Lykilorð:
       input(type="password" name="password")
-    button Innskrá
+    button.input__button Innskrá
 
-  footer
-    a(href='/') Forsíða
+  footer.footer
+    p.footer__text
+      a(href='/') Forsíða
