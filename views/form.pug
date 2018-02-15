@@ -8,13 +8,13 @@ block content
   form.input(method="post" action="/")
     label.input__name Nafn:
       //- muna að setja required
-      input(type="text" name="name" value=name)
+      input(type="text" name="name" value=name required)
     label.input__email Netfang:
-      input(type="email" name="email" value=email)
+      input(type="email" name="email" value=email required)
     label.input__ssn Kennitala:
-      input(type="text" name="ssn" pattern="[0-9]{6}-?[0-9]{4}" value=ssn)
+      input(type="text" name="ssn" pattern="[0-9]{6}-?[0-9]{4}" value=ssn required)
     label.input__amount Fjöldi:
-      input(type="number" name="amount" min="1" value=amount)
+      input(type="number" name="amount" min="1" value=amount required)
     button Skrá
 
   footer
