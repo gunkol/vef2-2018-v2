@@ -2,6 +2,23 @@ extends layout
 
 block content
   h2 Birtum töfluna
+  table.table
+    tr
+      th Id
+      th Date
+      th Name
+      th Email
+      th Amount
+      th Kt
+    each row in orders
+      tr
+        td= row.id
+        td= row.date
+        td= row.name
+        td= row.email
+        td= row.amount
+        td= row.ssn
+  a(href="/admin/download") Sækja  
 
   footer
     a(href="/") Forsíða

@@ -1,6 +1,8 @@
 const express = require('express');
 const { Client } = require('pg');
 
+const connectionString = process.env.DATABASE_URL || 'postgres://:@localhost/v2';
+
 const router = express.Router();
 
 function ensureLoggedIn(req, res, next) {
@@ -11,8 +13,23 @@ function ensureLoggedIn(req, res, next) {
   return res.redirect('/login');
 }
 
-router.get('/admin', ensureLoggedIn, (req, res) => {
-  res.render('admin');
+async function fetchOrders() {
+  const client = new Client({ connectionString });
+  await client.connect();
+  const result = await client.query('SELECT * FROM orders');
+  await client.end();
+
+  return result.rows;
+}
+
+router.get('/admin', ensureLoggedIn, async (req, res) => {
+  const orders = await fetchOrders();
+  console.info(orders);
+  res.render('admin', { orders });
+});
+
+router.get('/admin/download', ensureLoggedIn, (req, res) => {
+  res.send('<h1>Download</h1>');
 });
 
 module.exports = router;
