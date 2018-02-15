@@ -25,6 +25,10 @@ body {
   color: #333;
 }
 
+a {
+  color: #333;
+}
+
 .input {
   display: flex;
   flex-direction: column;
